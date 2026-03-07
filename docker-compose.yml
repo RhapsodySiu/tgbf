@@ -1,0 +1,10 @@
+services:
+  tgbf:
+    build: .
+    volumes:
+      - ./data:/app/data  # mount local data folder
+      - ./data:/app/app   # hot reload during env
+    env_file: .env
+    ports:
+      - "8000:8000"
+    network_mode: host    # let container reach local LLM
