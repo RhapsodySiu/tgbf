@@ -3,11 +3,11 @@ import logging
 import os
 
 from fastapi import FastAPI
-from bot import bot, dp
-from handlers.commands import router
+from app.bot import bot, dp
+from app.handlers.commands import router
 from aiogram.exceptions import TelegramBadRequest, TelegramUnauthorizedError
 
-from config import settings
+from app.config import settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Main")

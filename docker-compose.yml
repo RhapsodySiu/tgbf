@@ -8,3 +8,5 @@ services:
     ports:
       - "8000:8000"
     network_mode: host    # let container reach local LLM
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

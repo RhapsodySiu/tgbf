@@ -1,0 +1,13 @@
+services:
+  tgbf:
+    image: ghcr.io/rhapsodySiu/tgbf:latest
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      APP_MODE: webhook
+      ENVIRONMENT: prod
+    volumes:
+      - companion-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  companion-data:
