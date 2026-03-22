@@ -4,7 +4,8 @@ import os
 
 from fastapi import FastAPI
 from app.bot import bot, dp
-from app.handlers.commands import router
+from app.handlers.commands import router as command_router
+from app.handlers.messages import router as message_router
 from aiogram.exceptions import TelegramBadRequest, TelegramUnauthorizedError
 
 from app.config import settings
@@ -12,7 +13,7 @@ from app.config import settings
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Main")
 
-dp.include_router(router=router)
+dp.include_routers(command_router, message_router)
 
 # placeholder web server
 app = FastAPI()

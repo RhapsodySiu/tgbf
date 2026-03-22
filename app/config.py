@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     webhook_path: Optional[str] = Field(None, description="Webhook Path")
     llm_provider: str = Field(..., description="LLM Provider")
     llm_base_url: str = Field(..., description="LLM Base URL")
+    llm_model: str = Field(..., description="LLM model used, ignored for koboldcpp")
+    llm_api_key: str = Field("none", description="API key, placeholder for koboldcpp")
+    llm_max_tokens: int = Field(300, description="Reply token size")
+    llm_temperature: float = Field(0.9, description="LLM output temperature, higher the more creative")
     data_dir: str = Field(..., description="Database data path")
     model_config = SettingsConfigDict(
         env_file=".env",
