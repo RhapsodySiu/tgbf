@@ -9,4 +9,4 @@ router = Router()
 async def handle_message(message: Message):
     user_id = message.from_user.id
     reply = await get_reply(user_id, message.text)
-    await message.answer(reply)
+    await message.answer(reply, parse_mode=None)

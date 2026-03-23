@@ -453,9 +453,9 @@ The following are temporary implementations that must be replaced before product
 
 ### Next Implementation Priorities (in order)
 
-1. `AllowlistMiddleware` — check `message.from_user.id` against `users.is_allowed`; drop silently if not allowed
+[x] `AllowlistMiddleware` — check `message.from_user.id` against `users.is_allowed`; drop silently if not allowed
 2. Invite token flow — `/start INV_xxx` parses token, calls `UserRepository.get_by_invite_token()`, sets `is_allowed=True`
-3. `BotRepository` and `RelationshipRepository`
+[x] `BotRepository` and `RelationshipRepository`
 4. Replace in-memory `_histories` with DB-backed message log
 5. ChromaDB `memory_service.py` — preference extraction on each message, RAG retrieval injected into system prompt
 6. Multi-persona `BotRouter` middleware — resolves `bot_id` from webhook path, injects into handler context

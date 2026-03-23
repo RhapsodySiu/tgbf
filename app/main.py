@@ -2,6 +2,8 @@ import asyncio
 import logging
 import os
 
+import app.db.models
+
 from fastapi import FastAPI
 from app.bot import bot, dp
 from app.handlers.commands import router as command_router
@@ -9,10 +11,12 @@ from app.handlers.messages import router as message_router
 from aiogram.exceptions import TelegramBadRequest, TelegramUnauthorizedError
 
 from app.config import settings
+from app.middlewares.allowlist import AllowlistMiddleware
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("Main")
 
+dp.message.middleware(AllowlistMiddleware())
 dp.include_routers(command_router, message_router)
 
 # placeholder web server
