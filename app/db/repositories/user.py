@@ -20,5 +20,5 @@ class UserRepository(CRUDRepository[User, int]):
         )
         return list(result.scalars().all())
 
-    async def set_allowed(self, db: AsyncSession, user_id: str, allowed: bool) -> User:
+    async def set_allowed(self, db: AsyncSession, user_id: int, allowed: bool) -> User:
         return await self.update(db, user_id, {"is_allowed": allowed})

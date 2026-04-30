@@ -4,3 +4,8 @@ __pycache__/
 *.pyc
 .conda/
 alembic/versions/
+.hypothesis
+.vscode
+.github
+.aidlc-rule-details
+aidlc-docs
