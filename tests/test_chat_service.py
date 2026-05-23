@@ -53,7 +53,7 @@ async def test_retry_exhausted_failure() -> None:
             with patch.object(chat_service.relationship_repo, "ensure_relationship", AsyncMock(return_value=None)):
                 with patch.object(
                     chat_service,
-                    "_load_history_with_retry",
+                    "_load_history",
                     AsyncMock(side_effect=PersistenceRetryExhausted("failed")),
                 ):
                     try:

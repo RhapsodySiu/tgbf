@@ -15,7 +15,8 @@ router = Router()
 async def handle_message(message: Message):
     user_id = message.from_user.id
     chat_id = message.chat.id if message.chat else None
-    bot_id = str(message.bot.id)
+    # Canonical bot_id source: Telegram runtime identity (message.bot.id)
+    bot_id = message.bot.id
     dedup_key = str(message.message_id) if message.message_id is not None else None
 
     bind_log_context(bot_id=bot_id, chat_id=chat_id, user_id=user_id)
@@ -30,10 +31,12 @@ async def handle_message(message: Message):
         )
         await message.answer(reply, parse_mode=None)
     except ScopeResolutionError:
-        await message.answer("Unable to resolve chat scope. Please try again.", parse_mode=None)
+        # Unit C: generic safe message for scope failures (no info leak)
+        await message.answer("We're currently unable to process your message. Please try again.", parse_mode=None)
     except UnknownBotError:
-        await message.answer("Bot configuration not found. Please contact support.", parse_mode=None)
+        # Unit C: generic safe message for bot resolution failures (no info leak)
+        await message.answer("We're currently unable to process your message. Please try again.", parse_mode=None)
     except PersistenceRetryExhausted:
-        await message.answer("Temporary storage issue. Please try again shortly.", parse_mode=None)
+        await message.answer("We're experiencing technical difficulties. Please try again later.", parse_mode=None)
     finally:
         clear_log_context()

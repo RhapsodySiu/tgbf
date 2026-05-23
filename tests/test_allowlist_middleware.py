@@ -15,6 +15,9 @@ class FakeMessage:
     def __init__(self, text: str):
         self.text = text
         self.answer = AsyncMock()
+        self.bot = SimpleNamespace(id=777)
+        self.from_user = SimpleNamespace(id=456)
+        self.chat = SimpleNamespace(id=123)
 
 
 async def _dummy_handler(event, data):

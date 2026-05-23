@@ -302,11 +302,11 @@ Document metadata schema per collection entry:
 | SQLAlchemy models (all 5) | ✅ Done | |
 | Alembic migrations | ✅ Done | initial schema applied |
 | UserRepository + tests | ✅ Done | |
-| BotRepository | 🔲 TODO | |
-| RelationshipRepository | 🔲 TODO | |
-| AllowlistMiddleware | 🔲 TODO | gate by user_id |
+| BotRepository | ✅ Done  | |
+| RelationshipRepository | ✅ Done  | |
+| AllowlistMiddleware | ✅ Done  | gate by user_id |
 | Invite token flow | 🔲 TODO | `/start INV_xxx` → auto-allowlist |
-| DB-backed chat history | 🔲 TODO | replace in-memory `_histories` |
+| DB-backed chat history | ✅ Done  | replace in-memory `_histories` |
 | ChromaDB RAG memory | 🔲 TODO | preference extraction + retrieval |
 | Multi-persona BotRouter | 🔲 TODO | resolve bot_id from webhook path |
 | Persona config from DB | 🔲 TODO | replace hardcoded system prompt |
